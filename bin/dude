@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+require 'the_dude'
+
+include TheDude::Dsl
+
+DUDERC_PATH = "#{ENV['HOME']}/.duderc"
+load DUDERC_PATH if File.exists? DUDERC_PATH
+
+# Setup rlwrap for readline support
+if ARGV.include? '-i'
+  interactive_mode = true
+  if !ENV['__REPL_WRAPPED'] && system("which rlwrap > /dev/null 2> /dev/null")
+    ENV['__REPL_WRAPPED'] = '0'
+
+    exec "rlwrap #{Shellwords.escape(__FILE__)} #{ARGV.join(' ')}"
+  end
+end
+
+question = ARGV.join(' ')
+
+if interactive_mode
+  loop do
+    print "dude, "
+    begin
+      question = $stdin.gets.chomp
+    rescue NoMethodError, Interrupt
+      exit
+    end
+
+    puts TheDude.ask question
+    puts ''
+  end
+else
+  puts TheDude.ask question
+end
