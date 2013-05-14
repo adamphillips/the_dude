@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    the_dude (0.0.1)
+    the_dude (0.0.2)
       colored
       hirb
       nokogiri
