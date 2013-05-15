@@ -5,6 +5,19 @@ describe TheDude::Dsl do
     include TheDude::Dsl
   end
 
+  describe '#ask' do
+    context 'when asked' do
+      context 'and the command exists' do
+        before :each do
+          Anony.new.command 'hey', 'what'
+        end
+        it 'should perform the requested command' do
+          Anony.new.ask('hey').should == 'what'
+        end
+      end
+    end
+  end
+
   describe '#command' do
     context 'when passed a question' do
       before :each do
