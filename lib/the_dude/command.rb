@@ -1,7 +1,7 @@
 module TheDude
   class Command
-    # [String | Regexp] The question for this command
-    attr_reader :question
+    # [TheDude::Expression] The expression for this command
+    attr_reader :expression
 
     # [String | Proc | Block] The answer for this command
     attr_accessor :answer
@@ -23,12 +23,12 @@ module TheDude
     #     puts 'how are you?'
     #   end
     #
-    # @param [String | Regexp] question the question to ask
-    # @param [String | Proc]   answer   the answer to the question
+    # @param [String | Regexp] expression  the question to ask
+    # @param [String | Proc]   answer      the answer to the question
     #
     # @return [TheDude::Command]
-    def initialize question, answer=nil, &block_answer
-      @question = Expression.new(question).to_regex
+    def initialize expression, answer=nil, &block_answer
+      @expression = Expression.new(expression)
       @answer = block_answer || answer
 
       TheDude.register_command self

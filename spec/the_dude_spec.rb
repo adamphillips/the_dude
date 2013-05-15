@@ -15,6 +15,27 @@ describe TheDude do
     end
   end
 
+  describe '.command' do
+    context 'when passed a command' do
+      context 'that has not been registered' do
+        it 'should return false' do
+          TheDude.command(/duff/).should be_false
+        end
+      end
+
+      context 'that has been registered' do
+        before :each do
+          TheDude::Variable.new(:cool, /.*/).register
+          @command = TheDude::Command.new(/something :cool/)
+        end
+
+        it 'should return the command' do
+          TheDude.command(/something :cool/).should == @command
+        end
+      end
+    end
+  end
+
   describe '.register_command' do
     context 'when passed a command' do
       it 'should add the command to the commands collection' do

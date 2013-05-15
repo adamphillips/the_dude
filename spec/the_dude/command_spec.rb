@@ -45,7 +45,7 @@ describe TheDude::Command do
       end
 
       it 'should convert the expression to a normal regex' do
-        @command.question.should == /connect to (\S+)/
+        @command.expression.to_regexp.should == /connect to (\S+)/
       end
     end
   end

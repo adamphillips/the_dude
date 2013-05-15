@@ -29,6 +29,22 @@ module TheDude
       command.ask *arguments
     end
 
+    # Returns the command registered with the specified question. This should
+    # be the expression before it is processed and parsed for variables
+    #
+    # @example
+    #
+    #   TheDude::Comand.new(/something :cool/)
+    #   TheDude.command(/something :cool) # returns the above command
+    #
+    # @param [String | Regex] expression A dude command
+    #
+    # @return [TheDude::Command | false]
+    def command expression
+      c = commands.select {|c, v| v.expression.expression == expression}
+      (c.any?) ? c.first[1] : false
+    end
+
     # @return [Hash] Returns the commands the dude knows about
     def commands
       @commands || {}
@@ -49,7 +65,7 @@ module TheDude
     # @param [TheDude::Command] command The command to register
     def register_command command
       @commands ||= {}
-      @commands[command.question] = command
+      @commands[command.expression.to_regexp] = command
     end
 
     # Registers a new variable with the dude
@@ -78,14 +94,14 @@ module TheDude
       string
     end
 
-    # Returns the arguments for a question based on the specified command
+    # Returns the arguments for an expression based on the specified command
     #
-    # @param [String]           question  The question
-    # @param [TheDude::Command] command   The command
+    # @param [String]           expression  The question or task
+    # @param [TheDude::Command] command     The command
     #
     # @return [Array] An array of arguments
-    def arguments_for question, command
-      question.scan(command.question)[0]
+    def arguments_for expression, command
+      expression.scan(command.expression.to_regexp)[0]
     end
 
     # @return [String] Applies dude formatting
@@ -93,18 +109,18 @@ module TheDude
       string
     end
 
-    # Returns the command for answering the specified question
+    # Returns the command for answering the specified expression
     #
-    # @param [String] question The question asked
+    # @param [String] expression The expression asked
     #
     # @return [TheDude::Command]
-    def find_command_for question
+    def find_command_for expression
       # if there's an exact match return that first
-      return commands[question] if commands[question]
+      return commands[expression] if commands[expression]
 
       commands.each do |key, val|
         if key.kind_of? Regexp
-          return val if key =~ question
+          return val if key =~ expression
         end
       end
 
