@@ -45,7 +45,7 @@ module TheDude
       vars = @expression.source.scan(PLACEHOLDER_REGEX)[0]
       return false if vars.nil?
       vars = vars.map{|v| v.strip.to_sym}
-      raise TheDude::UndefinedVariableError if (vars - TheDude.variables.keys).any?
+      raise TheDude::UndefinedVariableError.new("Undefined variables : #{(vars - TheDude.variables.keys).join(' ')} in #{@expression}") if (vars - TheDude.variables.keys).any?
     end
 
     # [Regexp] Substitues the specified variable for its pattern and converts
