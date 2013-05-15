@@ -39,8 +39,8 @@ module TheDude
     # parameters.
     def ask *args
       begin
-        if answer.kind_of? Proc
-          instance_exec(*args, &answer)
+        if answer.kind_of?(Proc)
+          TheDude::Dsl.new.instance_exec(*args, &answer)
         else
           answer
         end

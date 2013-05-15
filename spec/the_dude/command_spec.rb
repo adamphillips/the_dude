@@ -38,6 +38,21 @@ describe TheDude::Command do
       end
     end
 
+    context 'when passed a string and a block param using Dsl shortcuts and full commands' do
+      before :each do
+        TheDude::Command.new 'test child', ->{'it worked'}
+        TheDude::Command.new /test child 2 (.*)/, ->(message){"the message says #{message}"}
+        TheDude::Command.new 'test block' do
+          message = ask 'test child'
+          TheDude.ask "test child 2 #{message}"
+        end
+      end
+
+      it 'should process both commands correctly and return the return value from the last' do
+        TheDude.ask('test block').should == "the message says it worked"
+      end
+    end
+
     context 'when passed an expression question containing a defined variable' do
       before :each do
         TheDude::Variable.new(:server, /\S+/).register

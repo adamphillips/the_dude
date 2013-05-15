@@ -1,5 +1,5 @@
 module TheDude
-  module Dsl
+  class Dsl
     # Forwards the call on to {TheDude.ask}
     def ask *args
       TheDude.ask *args
@@ -9,5 +9,6 @@ module TheDude
     def command *args, &block
       TheDude::Command.new *args, &block
     end
+
   end
 end
