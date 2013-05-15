@@ -9,6 +9,7 @@ require 'the_dude/config'
 require 'the_dude/dsl'
 require 'the_dude/expression'
 require 'the_dude/http'
+require 'the_dude/plugin'
 require 'the_dude/variable'
 require 'the_dude/version'
 

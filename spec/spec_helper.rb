@@ -1,7 +1,9 @@
 require 'the_dude'
 
 require 'fakeweb'
-require 'support/webmocks'
+require 'ostruct'
+
+Dir["#{Dir.pwd}/spec/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
   config.before :each do

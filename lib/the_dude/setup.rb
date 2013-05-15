@@ -19,3 +19,5 @@ TheDude::Command.new /^show me pictures of (.*)/, ->(query){ `open "https://www.
 TheDude::Command.new /source for :url/, ->(url){ `curl #{url} | highlight --syntax html -O xterm256`  }
 TheDude::Command.new /headers for :url/, ->(url){ `curl -I #{url}`  }
 
+# Load plugins
+TheDude::Plugin.all.each {|r| require r.gem_name}
