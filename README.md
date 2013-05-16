@@ -1,6 +1,7 @@
 # The Dude
 
 [![Code Climate](https://codeclimate.com/github/adamphillips/the_dude.png)](https://codeclimate.com/github/adamphillips/the\_dude)
+[![Build Status](https://travis-ci.org/adamphillips/the_dude.png?branch=master)](https://travis-ci.org/adamphillips/the\_dude)
 
 The Dude is here to make your terminal life more chilled.
 
