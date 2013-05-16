@@ -1,18 +1,14 @@
 require 'spec_helper'
 
 describe TheDude::Dsl do
-  class Anony
-    include TheDude::Dsl
-  end
-
   describe '#ask' do
     context 'when asked' do
       context 'and the command exists' do
         before :each do
-          Anony.new.command 'hey', 'what'
+          TheDude::Dsl.new.command 'hey', 'what'
         end
         it 'should perform the requested command' do
-          Anony.new.ask('hey').should == 'what'
+          TheDude::Dsl.new.ask('hey').should == 'what'
         end
       end
     end
@@ -26,7 +22,7 @@ describe TheDude::Dsl do
 
       context 'and a string answer' do
         it 'should register a new dude command' do
-          Anony.new.command @question, 'what'
+          TheDude::Dsl.new.command @question, 'what'
           TheDude.commands.length.should == 1
           TheDude.commands[/^hey$/].ask.should == 'what'
         end
@@ -34,7 +30,7 @@ describe TheDude::Dsl do
 
       context 'and a proc answer' do
         it 'should register a new dude command' do
-          Anony.new.command @question, ->{'what'}
+          TheDude::Dsl.new.command @question, ->{'what'}
           TheDude.commands.length.should == 1
           TheDude.commands[/^hey$/].ask.should == 'what'
         end
@@ -42,7 +38,7 @@ describe TheDude::Dsl do
 
       context 'and a block answer' do
         it 'should register a new dude command' do
-          Anony.new.command @question do
+          TheDude::Dsl.new.command @question do
             'what'
           end
           TheDude.commands.length.should == 1

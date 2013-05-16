@@ -17,11 +17,18 @@ module TheDude
 
     # Class methods
     class << self
+      # Runs the specified code inside an instance of the DSL
+      #
+      # @param [String] code Code to run
+      def run code
+        new.instance_eval code
+      end
+
       # Reads in a file and processes it using The Dude Dsl
       #
       # @param [String] path Path to the file to read
       def from_file path
-        new.instance_eval File.read(path) if File.exists? path
+        run File.read(path) if File.exists? path
       end
     end
   end

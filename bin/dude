@@ -1,10 +1,7 @@
 #!/usr/bin/env ruby
 require 'the_dude'
 
-#include TheDude::Dsl
-
 DUDERC_PATH = "#{ENV['HOME']}/.duderc"
-#load DUDERC_PATH if File.exists? DUDERC_PATH
 TheDude::Dsl.from_file DUDERC_PATH
 
 # Setup rlwrap for readline support
