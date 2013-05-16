@@ -19,5 +19,29 @@ TheDude::Command.new /^show me pictures of (.*)/, ->(query){ `open "https://www.
 TheDude::Command.new /source for :url/, ->(url){ `curl #{url} | highlight --syntax html -O xterm256`  }
 TheDude::Command.new /headers for :url/, ->(url){ `curl -I #{url}`  }
 
+TheDude::Command.new 'list vars' do
+  extend Hirb::Console
+  say 'Defined variables'
+  say table(TheDude.variables.map {|k, v| {var: v.name, regex: v.pattern}})
+end
+
+TheDude::Command.new 'list commands' do
+  extend Hirb::Console
+  say 'Defined commands'
+  say table(TheDude.commands.map {|k, v| {expr: v.expression.expression, regex: v.expression.to_regexp}})
+end
+
+TheDude::Command.new 'list plugins' do
+  extend Hirb::Console
+  say 'Loaded plugins'
+  say table(TheDude::Plugin.all.map {|v| {name: v.name, gem_name: v.gem_name}})
+end
+
+TheDude::Command.new 'what you got' do
+  ask 'list vars'
+  ask 'list commands'
+  ask 'list plugins'
+end
+
 # Load plugins
 TheDude::Plugin.all.each {|r| require r.gem_name}
