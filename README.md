@@ -9,9 +9,11 @@ Alternatively, The Dude already knows how to do a bunch of stuff for you.
 
 For example:
 
-    $ dude fetch google.co.uk # opens a google.co.uk in lynx
-    $ dude show me pictures of cool stuff # opens a browser with a google images search for 'cool stuff'
-    $ dude wassup # starts top
+```shell
+$ dude fetch google.co.uk # opens a google.co.uk in lynx
+$ dude show me pictures of cool stuff # opens a browser with a google images search for 'cool stuff'
+$ dude wassup # starts top
+```
 
 How can this be useful?
 - a single dude command can trigger a bunch of other commands.  Sure you
@@ -26,15 +28,32 @@ How can this be useful?
 
 ## Talking to The Dude
 
-The Dude is still very young and not on rubygems quite yet. For the mean
-time, you will need to checkout the repo and build the gem.
+You can install TheDude using
+
+```shell
+$ gem install the_dude
+```
 
 The Dude comes with a 'dude' binary so you can use this to run commands
 
-    dude why? # will output 'because'
+```shell
+dude why? # will output 'because'
+```
 
-Alternatively, you can start the dude inteactively with
+Alternatively, you can start the dude interactively with
 
-    dude -i
+```shell
+dude -i
+```
 
 Then you get a dude prompt you can enter commands straight into.
+
+## Installing plugins
+
+You can install plugins for TheDude that contain additional commands or add additional functionality. Plugins are bundled as gems. For example to install the trello plugin simply use
+
+```shell
+$ gem install the_dude-trello
+```
+
+You will now be able to use the commands defined in the Trello plugin.
