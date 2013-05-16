@@ -22,9 +22,9 @@ How can this be useful?
   you're happy writing shell scripts.
 - for the command-line phobic, dude provides a friendly interface to the
   command line.
-- for those who are at on the command line, there can still be a benefit
+- for those who are at home on the command line, there can still be a benefit
   in reducing the cognitive overhead required to run scripts.
-- Commands can be bundled and shared using gems meaning that command line savvy
+- commands can be bundled and shared using gems meaning that command line savvy
   devs can set up simpler commands for other team members to use.
 
 ## Talking to The Dude
@@ -38,13 +38,13 @@ $ gem install the_dude
 The Dude comes with a 'dude' binary so you can use this to run commands
 
 ```shell
-dude why? # will output 'because'
+$ dude why? # will output 'because'
 ```
 
 Alternatively, you can start the dude interactively with
 
 ```shell
-dude -i
+$ dude -i
 ```
 
 Then you get a dude prompt you can enter commands straight into.
