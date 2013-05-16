@@ -13,16 +13,16 @@ For example:
     $ dude show me pictures of cool stuff # opens a browser with a google images search for 'cool stuff'
     $ dude wassup # starts top
 
-If this sounds like fancypants bash aliases, you'd be about right. So what's the point?
-
-Well, there's a few reasons
+How can this be useful?
 - a single dude command can trigger a bunch of other commands.  Sure you
   could write a shell script and run that using an alias but that assumes
   you're happy writing shell scripts.
 - for the command-line phobic, dude provides a friendly interface to the
   command line.
-- for those who are happy on the command line, there can still be a benefit
-  in reducing the cognitive overhead required to run scripts
+- for those who are at on the command line, there can still be a benefit
+  in reducing the cognitive overhead required to run scripts.
+- Commands can be bundled and shared using gems meaning that command line savvy
+  devs can set up simpler commands for other team members to use.
 
 ## Talking to The Dude
 
