@@ -53,7 +53,18 @@ describe TheDude::Command do
       end
     end
 
-    context 'when passed an expression question containing a defined variable' do
+    context 'when passed an string question containing a defined variable' do
+      before :each do
+        TheDude::Variable.new(:server, /\S+/).register
+        @command = TheDude::Command.new 'connect to :server', ->(server) {'connecting to #{server}'}
+      end
+
+      it 'should convert the expression to a normal regex adding start and end flags' do
+        @command.expression.to_regexp.should == /^connect\ to\ (\S+)$/
+      end
+    end
+
+    context 'when passed a regex question containing a defined variable' do
       before :each do
         TheDude::Variable.new(:server, /\S+/).register
         @command = TheDude::Command.new /connect to :server/, ->(server) {'connecting to #{server}'}

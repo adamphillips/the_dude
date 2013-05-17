@@ -25,8 +25,8 @@ module TheDude
       return @regexp unless @regexp.nil?
 
       # If we have a string, escape it turn it into a regex and send it back
-      @regexp = /^#{Regexp.quote @expression}$/ and return @regexp if @expression.kind_of? String
-      @regexp = @expression
+      @regexp = /^#{Regexp.quote @expression}$/ if @expression.kind_of? String
+      @regexp ||= @expression
 
       substitute_all_variables
       check_for_undefined_variables
@@ -55,7 +55,7 @@ module TheDude
     # [Regexp] Substitues the specified variable for its pattern and converts
     # the result back to a regex
     def substitute_variable var
-      subbed = @regexp.source.gsub(/\:#{var.name}(\s|$)/, "(#{var.pattern.source}) ")
+      subbed = @regexp.source.gsub(/\:#{var.name}(\s*)/, "(#{var.pattern.source})\\1")
       subbed.strip! if subbed
       Regexp.new subbed
     end
