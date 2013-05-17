@@ -57,4 +57,43 @@ describe TheDude::Dsl do
       end
     end
   end
+
+  describe '.run' do
+    context 'when passed a string' do
+      before :each do
+        TheDude::Dsl.run 'var :server, /\S+/'
+      end
+
+      it 'should execute the string' do
+        TheDude.variables.length.should == 1
+        TheDude.variables[:server].should be_kind_of TheDude::Variable
+      end
+    end
+
+    context 'when passed a block' do
+      before :each do
+        TheDude::Dsl.run do
+          var :server, /\S+/
+        end
+      end
+
+      it 'should execute the block' do
+        TheDude.variables.length.should == 1
+        TheDude.variables[:server].should be_kind_of TheDude::Variable
+      end
+    end
+
+    context 'when passed a string and a block' do
+      before :each do
+        TheDude::Dsl.run do
+          var :server, /\S+/
+        end
+      end
+
+      it 'should execute the block' do
+        TheDude.variables.length.should == 1
+        TheDude.variables[:server].should be_kind_of TheDude::Variable
+      end
+    end
+  end
 end

@@ -22,11 +22,18 @@ module TheDude
 
     # Class methods
     class << self
-      # Runs the specified code inside an instance of the DSL
+      # Runs the specified code inside an instance of the DSL. Code can be
+      # passed as a string or block. If both are given, the string is
+      # ignored.
       #
-      # @param [String] code Code to run
-      def run code
-        new.instance_eval code
+      # @param [String] text Code to run
+      # @param [Block]  code Code to run
+      def run text=nil, &code
+        if block_given?
+          new.instance_exec &code
+        else
+          new.instance_eval text
+        end
       end
 
       # Reads in a file and processes it using The Dude Dsl
