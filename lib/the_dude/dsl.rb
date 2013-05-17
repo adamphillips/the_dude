@@ -15,6 +15,11 @@ module TheDude
       TheDude.say *args
     end
 
+    # Creates and registers a new variable
+    def var *args
+      TheDude::Variable.new(*args).register
+    end
+
     # Class methods
     class << self
       # Runs the specified code inside an instance of the DSL

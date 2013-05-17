@@ -47,4 +47,14 @@ describe TheDude::Dsl do
       end
     end
   end
+
+  describe '#var' do
+    context 'when passed a variable name and regex' do
+      it 'should register the variable with TheDude' do
+        TheDude::Dsl.new.var :something, /cool/
+        TheDude.variables.length.should == 1
+        TheDude.variables[:something].pattern.should == /cool/
+      end
+    end
+  end
 end
