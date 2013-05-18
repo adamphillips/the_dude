@@ -58,3 +58,16 @@ $ gem install the_dude-trello
 ```
 
 You will now be able to use the commands defined in the Trello plugin.
+
+### Available plugins
+
+Currently the following plugins are available
+
+[Web](https://github.com/adamphillips/the_dude-web]
+Integrates Capybara and Nokogiri for easier web scripts
+
+[Trello](https://github.com/adamphillips/the_dude-ssh]
+Integrates SSH
+
+[Trello](https://github.com/adamphillips/the_dude-trello]
+Connect to Trello boards, lists and cards.
