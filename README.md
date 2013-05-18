@@ -66,8 +66,8 @@ Currently the following plugins are available
 [Web](https://github.com/adamphillips/the_dude-web) : 
 Integrates Capybara and Nokogiri for easier web scripts
 
-[SSH](https://github.com/adamphillips/the_dude-ssh) : 
+[SSH](https://github.com/adamphillips/the_dude-ssh) :
 Integrates SSH
 
-[Trello](https://github.com/adamphillips/the_dude-trello) : 
+[Trello](https://github.com/adamphillips/the_dude-trello) :
 Connect to Trello boards, lists and cards.
