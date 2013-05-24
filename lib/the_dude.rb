@@ -2,7 +2,6 @@ require 'date'
 require 'shellwords'
 
 require 'hirb'
-require 'colored'
 
 require 'the_dude/command'
 require 'the_dude/config'
