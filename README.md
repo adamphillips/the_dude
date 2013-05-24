@@ -131,7 +131,9 @@ the trello plugin simply use
 $ gem install the_dude-trello
 ```
 
-You will now be able to use the commands defined in the Trello plugin as well as use them to build your own commands
+After setting your Trello authentication details, you will then be able to use
+the commands defined in the Trello plugin as well as use them to build your own
+commands.
 
 ```ruby
 command /find (\S+) on ideas board/ do |text|
