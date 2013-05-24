@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 require 'the_dude'
 
-DUDERC_PATH = "#{ENV['HOME']}/.duderc"
-TheDude::Dsl.from_file DUDERC_PATH
+# Load rc files from home directory and local directory
+TheDude::Dsl.from_file "#{ENV['HOME']}/.duderc"
+TheDude::Dsl.from_file '.duderc'
 
 # Setup rlwrap for readline support
 if ARGV.include? '-i'
